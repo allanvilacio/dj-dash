@@ -1,0 +1,34 @@
+{% extends "accounts/base_accounts.html" %}
+
+{% block title %}
+login
+{% endblock title %}
+
+{% block content %}
+
+<div class="form-login">
+    <div>
+        {% if msg %}
+            <div id="alertDeleta" class="alert alert-danger fade show p-2 mb-2" role="alert">
+                {{msg}}
+            </div>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock content %}
